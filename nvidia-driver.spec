@@ -8,7 +8,7 @@
 %endif
 
 Name:           nvidia-driver
-Version:        %{VERSION}
+Version:        TBD
 Release:        1%{?dist}
 Summary:        NVIDIA's proprietary display driver for NVIDIA graphic cards
 Epoch:          3
