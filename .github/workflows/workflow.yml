@@ -29,7 +29,6 @@ jobs:
         run: |
           sudo dpkg --add-architecture i386
           sudo apt-get update
-          sudo apt-get upgrade
           sudo apt-get install -y rpm git ssh sshpass curl libsystemd-dev:i386 systemd
           
       - name: Download Nvida package.
