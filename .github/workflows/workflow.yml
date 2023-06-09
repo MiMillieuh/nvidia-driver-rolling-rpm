@@ -28,7 +28,7 @@ jobs:
       - name: Install RPM build dependencies
         run: |
           sudo apt-get update
-          sudo apt-get install -y rpm git ssh sshpass curl
+          sudo apt-get install -y rpm git ssh sshpass curl systemd
           
       - name: Download Nvida package.
         run: |
