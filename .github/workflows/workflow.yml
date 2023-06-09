@@ -35,6 +35,11 @@ jobs:
           chmod +x *.sh
           sh ${GITHUB_WORKSPACE}/nvidia-generate-tarballs.sh $(curl --silent "https://api.github.com/repos/NVIDIA/open-gpu-kernel-modules/releases/latest" | grep '"tag_name":' | sed -E 's/.*"([^"]+)".*/\1/')
           cp *.tar.xz /home/runner/rpmbuild/SOURCES/
+          cp com.nvidia.driver.metainfo.xml /home/runner/rpmbuild/SOURCES/
+          cp parse-supported-gpus.py /home/runner/rpmbuild/SOURCES/
+          cp nvidia-generate-tarballs.sh /home/runner/rpmbuild/SOURCES/
+          cp 10-nvidia.conf.outputclass-device /home/runner/rpmbuild/SOURCES/
+          cp 70-nvidia.preset /home/runner/rpmbuild/SOURCES/
       - name: Build RPM package
         run: |
           echo ${GITHUB_WORKSPACE}
