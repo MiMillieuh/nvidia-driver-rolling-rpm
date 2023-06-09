@@ -14,6 +14,8 @@ jobs:
       UPLOADERPW: ${{ secrets.UPLOADERPW }}
       UPLOADERUS: ${{ secrets.UPLOADERUS }}
       UPLOADERURL: ${{ secrets.UPLOADERURL }}
+      LATESTDRIVERVER: $(sh ${GITHUB_WORKSPACE}/get_latest_release.sh NVIDIA/open-gpu-kernel-modules)
+
     
 
     steps:
@@ -33,7 +35,6 @@ jobs:
       - name: Download Nvida package.
         run: |
           chmod +x *.sh
-          LATESTDRIVERVER=$(${GITHUB_WORKSPACE}/get_latest_release.sh NVIDIA/open-gpu-kernel-modules)
           sh ${GITHUB_WORKSPACE}/nvidia-generate-tarballs.sh $LATESTDRIVERVER
 
       - name: Build RPM package
