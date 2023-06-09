@@ -8,7 +8,7 @@
 %endif
 
 Name:           nvidia-driver
-Version:        530.41.03
+Version:        %{VERSION}
 Release:        1%{?dist}
 Summary:        NVIDIA's proprietary display driver for NVIDIA graphic cards
 Epoch:          3
@@ -144,6 +144,7 @@ This package provides the CUDA integration components for %{name}.
 %endif
  
 %prep
+VERSION=%{?version}
 %ifarch %{ix86}
 %setup -q -n %{name}-%{version}-i386
 %endif
