@@ -37,8 +37,9 @@ jobs:
 
       - name: Build RPM package
         run: |
-          echo ${GITHUB_WORKSPACE}          
-          rpmbuild --define "version $(curl --silent "https://api.github.com/repos/NVIDIA/open-gpu-kernel-modules/releases/latest" | grep '"tag_name":' | sed -E 's/.*"([^"]+)".*/\1/')" -ba ${GITHUB_WORKSPACE}/nvidia-driver.spec
+          echo ${GITHUB_WORKSPACE}
+          sed -i "s/Version:        TBD/Version:        $(curl --silent "https://api.github.com/repos/NVIDIA/open-gpu-kernel-modules/releases/latest" | grep '"tag_name":' | sed -E 's/.*"([^"]+)".*/\1/')/" votre_fichier.spec
+          rpmbuild -ba ${GITHUB_WORKSPACE}/nvidia-driver.spec
           echo $PWD
           ls
 
