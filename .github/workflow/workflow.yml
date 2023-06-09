@@ -29,6 +29,11 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install -y rpm git ssh sshpass
+          
+      - name: Download Nvida package.
+        run: |
+          LATESTDRIVERVER=$(${GITHUB_WORKSPACE}/get_latest_release.sh NVIDIA/open-gpu-kernel-modules)
+          sh ${GITHUB_WORKSPACE}/nvidia-generate-tarballs.sh LATESTDRIVERVER
 
       - name: Build RPM package
         run: |
