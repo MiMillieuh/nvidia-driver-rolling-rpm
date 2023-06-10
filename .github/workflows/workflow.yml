@@ -27,6 +27,7 @@ jobs:
 
       - name: Install RPM build dependencies
         run: |
+          echo 'APT::Get::Always-Include-Phased-Updates "true";' | sudo tee -a /etc/apt/apt.conf.d/99-phased-updates
           sudo dpkg --add-architecture i386
           sudo apt-get update
           sudo apt-get install -y rpm git ssh sshpass curl libsystemd-dev:i386 systemd libgcc-s1:i386
